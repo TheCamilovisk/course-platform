@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "course-platform"
+version = "0.1.0"
+description = ""
+authors = ["TheCamilovisk <camilolgon@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.2"
+pillow = "^11.2.1"
+cloudinary = "^1.44.0"
+python-decouple = "^3.8"
+django-htmx = "^1.23.0"
+django-tailwind = {extras = ["reload"], version = "^4.0.1"}
+ruff = "^0.11.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
