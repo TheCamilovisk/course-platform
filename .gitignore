@@ -179,3 +179,6 @@ pyrightconfig.json
 
 # VSCode
 .vscode
+
+# Django's local-cdn
+local-cdn
