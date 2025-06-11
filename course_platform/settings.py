@@ -12,9 +12,17 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 LOCAL_CDN = BASE_DIR / 'local-cdn'
+TEMPLATE_DIR = BASE_DIR / 'templates'
+
+
+CLOUDINARY_CLOUD_NAME = config('CLOUDINARY_CLOUD_NAME', default='')
+CLOUDINARY_PUBLIC_API_KEY = config('CLOUDINARY_PUBLIC_API_KEY', default='')
+CLOUDINARY_SECRET_API_KEY = config('CLOUDINARY_SECRET_API_KEY', default='')
 
 
 # Quick-start development settings - unsuitable for production
@@ -58,7 +66,7 @@ ROOT_URLCONF = 'course_platform.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
