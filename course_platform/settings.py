@@ -24,6 +24,8 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool, default=True)
 ADMIN_USER_NAME = config('ADMIN_USER_NAME', default='Admin user')
 ADMIN_USER_EMAIL = config('ADMIN_USER_EMAIL', default=None)
 
+EMAIL_ADDRESS = config('EMAIL_ADDRESS', default=None)
+
 MANAGERS = []
 ADMINS = []
 if all([ADMIN_USER_NAME, ADMIN_USER_EMAIL]):
@@ -65,6 +67,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'courses',
+    'emails',
 ]
 
 MIDDLEWARE = [
