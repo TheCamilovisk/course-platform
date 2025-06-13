@@ -6,4 +6,12 @@ Hello World from Home Page on Course Platform
 
 {% block content %}
 <h1>Hello World</h1>
+
+<div>
+    <form method="POST" action=".">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Login</button>
+    </form>
+</div>
 {% endblock content %}
