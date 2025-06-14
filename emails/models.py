@@ -1,3 +1,6 @@
+import uuid
+
+from django.conf import settings
 from django.db import models
 
 
@@ -11,6 +14,7 @@ class Email(models.Model):
 class EmailVerificationEvent(models.Model):
     parent = models.ForeignKey(Email, on_delete=models.SET_NULL, null=True)
     email = models.EmailField()
+    token = models.UUIDField(default=uuid.uuid1)
     attempts = models.IntegerField(default=0)
     last_attempt_at = models.DateTimeField(
         auto_now=False, auto_now_add=False, blank=True, null=True
@@ -20,3 +24,6 @@ class EmailVerificationEvent(models.Model):
         auto_now=False, auto_now_add=False, blank=True, null=True
     )
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    def get_link(self):
+        return f'{settings.BASE_URL}/verify/{self.token}/'
