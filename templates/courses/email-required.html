@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Email required to continue</h1>
+
+{% include "courses/snippets/list-display.html" with queryset=lessons_queryset %}
+
+{% endblock content %}

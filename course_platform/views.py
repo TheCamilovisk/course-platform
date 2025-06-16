@@ -9,19 +9,16 @@ EMAIL_ADDRESS = settings.EMAIL_ADDRESS
 
 def home_view(request, *args, **kwargs):
     template_name = 'home.html'
-    print(request.POST)
     form = EmailForm(request.POST or None)
     context = {'form': form, 'message': ''}
     if form.is_valid():
         email_val = form.cleaned_data.get('email')
         obj = email_services.start_verification_event(email_val)
         # obj = form.save()
-        print(obj)
         context['form'] = EmailForm()
         context['message'] = (
             f'Success! Check your email for verification from {EMAIL_ADDRESS}'
         )
     else:
         print(form.errors)
-    print('email_id', request.session.get('email_id'))
     return render(request, template_name, context)
