@@ -4,6 +4,6 @@
 
 <h1>Email required to continue</h1>
 
-{% include "courses/snippets/list-display.html" with queryset=lessons_queryset %}
+<div hx-get="/hx/login/" hx-trigger="load"></div>
 
 {% endblock content %}

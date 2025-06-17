@@ -1,7 +1,30 @@
+from django.conf import settings
 from django.contrib import messages
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 
 from emails import services
+from emails.forms import EmailForm
+
+EMAIL_ADDRESS = settings.EMAIL_ADDRESS
+
+
+def email_token_login_view(request):
+    if not request.htmx:
+        return redirect('/')
+    template_name = 'emails/hx/form.html'
+    form = EmailForm(request.POST or None)
+    context = {'form': form, 'message': ''}
+    if form.is_valid():
+        email_val = form.cleaned_data.get('email')
+        obj = services.start_verification_event(email_val)
+        # obj = form.save()
+        context['form'] = EmailForm()
+        context['message'] = (
+            f'Success! Check your email for verification from {EMAIL_ADDRESS}'
+        )
+    else:
+        print(form.errors)
+    return render(request, template_name, context)
 
 
 # Create your views here.
