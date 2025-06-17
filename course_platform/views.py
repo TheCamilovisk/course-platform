@@ -7,6 +7,10 @@ from emails.forms import EmailForm
 EMAIL_ADDRESS = settings.EMAIL_ADDRESS
 
 
+def login_logout_template_view(request):
+    return render(request, 'auth/login-logout.html', {})
+
+
 def home_view(request, *args, **kwargs):
     template_name = 'home.html'
     form = EmailForm(request.POST or None)
