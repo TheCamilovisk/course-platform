@@ -3,6 +3,7 @@ module.exports = {
     "@tailwindcss/postcss": {},
     "postcss-simple-vars": {},
     "postcss-nested": {},
+    "flowbite/plugin": {},
   },
   content: [
     // Templates within theme app (e.g. base.html)

@@ -10,10 +10,13 @@
     <title>{% block head_title %}Hello World from Course Platform{% endblock head_title %}</title>
   </head>
   <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
+    {% include "base/navbar.html" %}
+    <div hx-get="/hx/login/" hx-trigger="load"></div>
     {% block content %}
     <h1 class="text-3xl font-bold underline">
       Hello world from base!
     </h1>
     {% endblock content %}
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
   </body>
 </html>
