@@ -12,11 +12,13 @@
   <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
     {% include "base/navbar.html" %}
     
+    <div class="{%if '/logout' not in request.path and '/login' not in request.path %}px-4 mx-auto max-w-screen-xl {% endif %}bg-white dark:bg-gray-900 md:h-screen">
     {% block content %}
     <h1 class="text-3xl font-bold underline">
       Hello world from base!
     </h1>
     {% endblock content %}
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
   </body>
 </html>
