@@ -42,7 +42,6 @@ def email_token_login_view(request):
         context['message'] = (
             f'Success! Check your email for verification from {EMAIL_ADDRESS}'
         )
-        return HttpResponseClientRedirect('/check-your-email')
     else:
         print(form.errors)
     return render(request, template_name, context)
